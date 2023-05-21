@@ -18,7 +18,7 @@ form.addEventListener("submit", (e) => {
   tasks.appendChild(li);
   input.value = "";
 
-  tarefas.push({ task, startTime });
+  tarefas.push({ task });
   localStorage.setItem("tasks", JSON.stringify(tarefas));
 });
 
