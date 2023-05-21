@@ -8,7 +8,7 @@ body{
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
-.container .list-group .list-group-item{
+.list-group .list-group-item{
   border: none;
   list-style: none;
   font-size: 18px;
@@ -24,10 +24,10 @@ body{
 @media (max-width:600px){
   .container{
     width: 100%;
-    background-color: aqua;
+    
   }
  
-  .container .list-group{
+  .container .list-group .list-group-item{
     border: none;
     list-style: none;
     font-size: 18px;
@@ -36,7 +36,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-   background-color: blue;
+   background-color: rgb(203, 203, 250);
+   margin-bottom: 10px;
   
   }
  
