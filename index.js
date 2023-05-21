@@ -13,7 +13,7 @@ form.addEventListener("submit", (e) => {
   li.innerHTML = `
     <span>${task}</span>
     <span class="start-time">Started at ${startTime}</span>
-    <button class="delete-btn">Delete</button>
+    <button class="btn btn-success">Delete</button>
   `;
   tasks.appendChild(li);
   input.value = "";
