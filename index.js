@@ -1,11 +1,55 @@
-const numbers = [1, 2, 3, 4, 5];
 
-const numeros = (...items) => {
-  const numberTotal = [...numbers, ...items];
-  const numberElements = numberTotal.map((number) => `<span>${number}</span>`);
-  const numberString = numberElements.join('');
-  document.querySelector('#list').innerHTML = numberString;
-  console.log(numberTotal);
-}
+const form = document.querySelector("#form");
+const input = document.querySelector("#task");
+const tasks = document.querySelector("#tasks");
+let tarefas = [];
 
-numeros(6, 7, 8, 9);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const task = input.value;
+  const startTime = new Date().toLocaleTimeString();
+  const li = document.createElement("li");
+  li.classList.add("task-item");
+  li.innerHTML = `
+    <span>${task}</span>
+    <span class="start-time">Started at ${startTime}</span>
+    <button class="delete-btn">Delete</button>
+  `;
+  tasks.appendChild(li);
+  input.value = "";
+
+  tarefas.push({ task, startTime });
+  localStorage.setItem("tasks", JSON.stringify(tarefas));
+});
+
+tasks.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-btn")) {
+    const li = e.target.closest("li");
+    const task = li.querySelector("span").textContent;
+    const index = tarefas.findIndex((item) => item.task === task);
+    if (index > -1) {
+      tarefas.splice(index, 1);
+      localStorage.setItem("tasks", JSON.stringify(tarefas));
+    }
+    li.remove();
+  }
+});
+
+// Carregar tarefas salvas do localStorage ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTasks = localStorage.getItem("tasks");
+  if (savedTasks) {
+    tarefas = JSON.parse(savedTasks);
+    tarefas.forEach((item) => {
+      const { task, startTime } = item;
+      const li = document.createElement("li");
+      li.classList.add("task-item");
+      li.innerHTML = `
+        <span>${task}</span>
+        <span class="start-time">Started at ${startTime}</span>
+        <button class="delete-btn">Delete</button>
+      `;
+      tasks.appendChild(li);
+    });
+  }
+});
