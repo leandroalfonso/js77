@@ -23,7 +23,7 @@ form.addEventListener("submit", (e) => {
 });
 
 tasks.addEventListener("click", (e) => {
-  if (e.target.classList.contains("delete-btn")) {
+  if (e.target.classList.contains("btn-success")) {
     const li = e.target.closest("li");
     const task = li.querySelector("span").textContent;
     const index = tarefas.findIndex((item) => item.task === task);
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
         <span>${task}</span>
         <span class="start-time">Started at ${startTime}</span>
-        <button class=" btn btn-success">Delete</button>
+        <button class="btn btn-success">Delete</button>
       `;
       tasks.appendChild(li);
     });
