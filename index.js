@@ -7,12 +7,12 @@ let tarefas = [];
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const task = input.value;
-  const startTime = new Date().toLocaleTimeString();
+  
   const li = document.createElement("li");
   li.classList.add("list-group-item");
   li.innerHTML = `
     <span>${task}</span>
-    <span class="start-time">Started at ${startTime}</span>
+   
     <button class="btn btn-success">Delete</button>
   `;
   tasks.appendChild(li);
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       li.innerHTML = `
       
         <span>${task}</span>
-        <span class="start-time">Started at ${startTime}</span>
+     
         <button class="btn btn-success">Delete</button>
       `;
       tasks.appendChild(li);
