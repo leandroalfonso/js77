@@ -20,7 +20,24 @@ body{
  
 
 }
-.list-group u{
-  padding: 0;
-  margin: 0;
+
+@media (max-width:600px){
+  .container{
+    width: 100%;
+    background-color: aqua;
+  }
+ 
+  .list-group .list-group-item{
+    border: none;
+    list-style: none;
+    font-size: 18px;
+    font-weight: 300;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+  
+  }
+ 
 }
