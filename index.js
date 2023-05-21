@@ -9,7 +9,7 @@ form.addEventListener("submit", (e) => {
   const task = input.value;
   const startTime = new Date().toLocaleTimeString();
   const li = document.createElement("li");
-  li.classList.add("task-item");
+  li.classList.add("list-group-item");
   li.innerHTML = `
     <span>${task}</span>
     <span class="start-time">Started at ${startTime}</span>
@@ -43,11 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
     tarefas.forEach((item) => {
       const { task, startTime } = item;
       const li = document.createElement("li");
-      li.classList.add("task-item");
+      li.classList.add("list-group-item");
       li.innerHTML = `
+      
         <span>${task}</span>
         <span class="start-time">Started at ${startTime}</span>
-        <button class="delete-btn">Delete</button>
+        <button class=" btn btn-success">Delete</button>
       `;
       tasks.appendChild(li);
     });
