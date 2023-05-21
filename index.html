@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>Todo List</title>
- <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-      <h1>Todo List</h1>
-      <form id="form" class="row mb-3">
-        <div class="col-9">
-          <input id="task" type="text" placeholder="Enter a task" required>
-        </div>
-        <div class="col-3">
-          <button type="submit">Add Task</button>
-        </div>
-      </form>
-      <ul id="tasks"></ul>
+      <div class="row">
+        <h1>Todo List</h1>
+        <form id="form" class="row mb-3">
+          <div class="col-9">
+            <input id="task" type="text" placeholder="Enter a task" required />
+          </div>
+          <div class="col-3">
+            <button type="submit">Add Task</button>
+          </div>
+        </form>
+        <ul id="tasks"></ul>
+      </div>
     </div>
-  
+
     <script>
-      const form = document.querySelector('#form');
-      const input = document.querySelector('#task');
-      const tasks = document.querySelector('#tasks');
+      const form = document.querySelector("#form");
+      const input = document.querySelector("#task");
+      const tasks = document.querySelector("#tasks");
       let tarefas = [];
-  
-      form.addEventListener('submit', (e) => {
+
+      form.addEventListener("submit", (e) => {
         e.preventDefault();
         const task = input.value;
         const startTime = new Date().toLocaleTimeString();
-        const li = document.createElement('li');
-        li.classList.add('task-item');
+        const li = document.createElement("li");
+        li.classList.add("task-item");
         li.innerHTML = `
           <span>${task}</span>
           <span class="start-time">Started at ${startTime}</span>
           <button class="delete-btn">Delete</button>
         `;
         tasks.appendChild(li);
-        input.value = '';
-  
+        input.value = "";
+
         tarefas.push({ task, startTime });
-        localStorage.setItem('tasks', JSON.stringify(tarefas));
+        localStorage.setItem("tasks", JSON.stringify(tarefas));
       });
-  
-      tasks.addEventListener('click', (e) => {
-        if (e.target.classList.contains('delete-btn')) {
-          const li = e.target.closest('li');
-          const task = li.querySelector('span').textContent;
+
+      tasks.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete-btn")) {
+          const li = e.target.closest("li");
+          const task = li.querySelector("span").textContent;
           const index = tarefas.findIndex((item) => item.task === task);
           if (index > -1) {
             tarefas.splice(index, 1);
-            localStorage.setItem('tasks', JSON.stringify(tarefas));
+            localStorage.setItem("tasks", JSON.stringify(tarefas));
           }
           li.remove();
         }
       });
-  
+
       // Carregar tarefas salvas do localStorage ao carregar a página
-      document.addEventListener('DOMContentLoaded', () => {
-        const savedTasks = localStorage.getItem('tasks');
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTasks = localStorage.getItem("tasks");
         if (savedTasks) {
           tarefas = JSON.parse(savedTasks);
           tarefas.forEach((item) => {
             const { task, startTime } = item;
-            const li = document.createElement('li');
-            li.classList.add('task-item');
+            const li = document.createElement("li");
+            li.classList.add("task-item");
             li.innerHTML = `
               <span>${task}</span>
               <span class="start-time">Started at ${startTime}</span>
