@@ -12,7 +12,7 @@ form.addEventListener("submit", (e) => {
   li.classList.add("list-group-item");
   li.innerHTML = `
     <span>${task}</span>
-    <span class="marker verde"><i class="bi bi-check2-circle"></i></span>
+    <span class="marker verde"><i class="bi bi-check-circle-fill"></i></span>
     <button class="btn btn-success">Delete</button>
   `;
 
