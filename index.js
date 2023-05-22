@@ -7,16 +7,33 @@ let tarefas = [];
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const task = input.value;
-  
+
   const li = document.createElement("li");
   li.classList.add("list-group-item");
   li.innerHTML = `
     <span>${task}</span>
-   
+    <span class="marker verde"><i class="bi bi-check2-circle"></i></span>
     <button class="btn btn-success">Delete</button>
   `;
+
+  const marker = li.querySelector(".marker");
+
+  marker.addEventListener("click", function() {
+    if (marker.classList.contains("verde")) {
+      marker.classList.remove("verde");
+      marker.classList.add("vermelho");
+    } else if (marker.classList.contains("vermelho")) {
+      marker.classList.remove("vermelho");
+      marker.classList.add("amarelo");
+    } else if (marker.classList.contains("amarelo")) {
+      marker.classList.remove("amarelo");
+      marker.classList.add("verde");
+    }
+  });
+
   tasks.appendChild(li);
   input.value = "";
+
 
   tarefas.push({ task });
   localStorage.setItem("tasks", JSON.stringify(tarefas));

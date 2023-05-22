@@ -26,6 +26,10 @@ body{
     width: 100%;
     
   }
+  .data{
+    color: black;
+
+  }
  
   .container .list-group .list-group-item{
     border: none;
@@ -36,9 +40,25 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-   background-color: rgb(203, 203, 250);
+   background-color: rgb(251, 251, 252);
    margin-bottom: 10px;
+   color: black;
   
+  }
+  .verde{
+    color: rgb(23, 209, 107);
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .vermelho{
+    color: rgb(219, 16, 16);
+    font-weight: 800;
+    font-size: 22px;
+  }
+  .amarelo{
+    color: rgb(221, 235, 25);
+    font-weight: ;
+    font-size: 22px;
   }
  
 }
